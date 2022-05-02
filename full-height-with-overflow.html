@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full height with overflow</title>
+</head>
+<body>
+<h1>CSS for full-screen UI interfaces</h1>
+
+<h2>Make the &lt;body> take up the whole vertical space, no more no less.</h2>
+
+<p>
+  Let’s consider a page with no content at all; just a &lt;body> tag. We’ll put a bit of padding and a background on &lt;html> (maroon)  a white background on &lt;body> so we can whether see the screen is being filled up. In the demos below, the pages are imported an &lt;iframe> but you can follow the link to test it out in the whole window.
+</p>
+<section>
+  <h3><a href="1.html">1.html</a></h2>
+  <iframe src="1.html" frameborder="0" height="500" width="100%"></iframe>
+  <p>As you can see the only requirement to get a full-screen presentation is setting height to 100% and giving the &lt;body> a display value of grid.</p>
+  <p>This is nice because you don’t have to do anything to the children of &lt;body>.</p>
+</section>
+<section>
+  <h3><a href="2.html">2.html</a></h2>
+  <iframe src="2.html" frameborder="0" height="500" width="100%"></iframe>
+  <p>The same thing can be done by using flex rather than grid, but it requires telling the first child to expand — giving it a flex value of 1. That is, flex-grow is set to 1, and flex-basis is set to 0.</p>
+</section>
+
+<section>
+  <h3><a href="3.html">3.html</a></h2>
+  <iframe src="3.html" frameborder="0" height="500" width="100%"></iframe>
+  <p>If you don’t like setting the display value on html, you can also set heights on html <em>and</em> &lt;body>. At least, this is the impression you get <a href="https://stackoverflow.com/questions/6654958/make-body-have-100-of-the-browser-height/38908284#38908284">from Stackoverflow</a>. But I find that it’s hard to find a way to remove the of <a href="https://stackoverflow.com/a/13128048">8px of default margin around the &lt;body></a>. This is true for this page:</p>
+
+  <pre><code>
+    document.documentElement.scrollHeight - (2 * 8) == window.innerHeight
+  </code></pre>
+
+  <p>So if you want to emulate the same effect as 1 and 2 above, you have to remove the margin on the &lt;body>, and <em>add it back</em> as padding on html.</p>
+
+  <h3><a href="3b.html">3b.html</a></h2>
+  <iframe src="3b.html" frameborder="0" height="500" width="100%"></iframe>
+
+  <p>That strikes me as a pain, 1 and 2 are better. And 1 is shorter than 2, so 1 is my default.</p>
+
+</section>
+
+
+<h2>Add content inside the &lt;body> and see if it falls apart.</h2>
+
+<p>Well, so far so good. One rule with two properties is not bad at all as a default starting point for an “application interface”. But we don’t have any content yet, and it seems likely that our approach might crumble once we start putting content inside our page, especially if that content has opinions about whether or not it should have a particular height. So, let’s add a &lt;main> tag under our &lt;body>, and see what happens to that content. We’ll make the &lt;main> have a background of the hilariously named <span style=background:lemonchiffon>lemonchiffon</span>. We’re also going to need some content for the &lt;main> to show up at all, so I’ll just add the text “main”.</p>
+
+
+<section>
+  <h3><a href="4.html">4.html</a></h2>
+  <iframe src="4.html" frameborder="0" height="500" width="100%"></iframe>
+<p>Unsurprisingly, the &lt;main> isn’t filling the height, because its parent doesn’t have a height set. An easy way around this is just to tell the &lt;body> to use display grid. </p>
+</section>
+
+<section>
+  <h3><a href="4b.html">4b.html</a></h2>
+    <p>Unsurprisingly, the &lt;main> isn’t filling the height, because its parent doesn’t have a height set. An easy way around this is just to tell the &lt;body> to use display grid. Let’s also stick a border and a margin on &lt;main> so that we can see how it’s fitting inside &lt;body> without causing the scrollbars to appear, but also taking up all the vertical space. Nice. </p>
+  <iframe src="4b.html" frameborder="0" height="500" width="100%"></iframe>
+</section>
+
+
+<section>
+  <h3><a href="5.html">5.html</a></h2>
+    <p>Good. But let’s make &lt;main> into a grid itself, and actually put something like a realistic layout in there. Let’s have a sidebar (we can use &lt;aside>), a &lt;header>, a couple &lt;div>s, and a &lt;footer>. </p>
+  <iframe src="5.html" frameborder="0" height="500" width="100%"></iframe>
+  <p>Now, we have problems. We want our full-screen layout <em>never</em> to grow bigger than the screen — there should never be “top-level” scrolling in this layout. But click the “Add paragraph” button a few times, and you’ll see that that is not what we have — the content pushes makes the first div grow, and it merrily pushes the whole &lt;main> down the page. What we want to happen is for the div to add a scrollbar when its content “overflows”. If you try this out in the standalone page, you’ll see that the whole viewport resizes. Bad.</p>
+</section>
+
+
+<section>
+  <h3><a href="6.html">6.html</a></h2>
+    <p></p>
+  <iframe src="6.html" frameborder="0" height="500" width="100%"></iframe>
+  <p>This is a tentative solution to the previous problem, but it’s not perfect. <em>If</em> you remove all padding and margin from both &lt;body> and &lt;html>, then you can get the right behavior, but it flows right up to the edge of the viewport. That’s a bit of a drag, because you often want to be able to have some margin around the whole “dashboard” interface.</p>
+</section>
+
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+/* 3b.css */
+@import url(colors.css);
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+  flex-direction: column;
+  padding: 8px;
+}
+
+body {
+  margin:0;
+  height: 100%;
+}
+

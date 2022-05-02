@@ -1,0 +1,16 @@
+/* 4b.css */
+@import url(colors.css);
+
+html {
+  height: 100%;
+  display: grid;
+}
+
+body {
+  display: grid;
+}
+
+main {
+  margin: 1em;
+  border: 1px solid;
+}

@@ -1,0 +1,44 @@
+/* 5.css */
+@import url(colors.css);
+
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+  display: grid;
+/*   max-height: 100vh; */
+  padding: 0;
+}
+
+body {
+  margin:0;
+  height: 100%;
+  display: grid;
+  grid-template-rows: minmax(0, 100vh);
+}
+
+main {
+  border: 1px solid;
+  display: grid;
+ 
+  grid-template: 
+    "sidebar header header" auto
+    "sidebar div-1  div-1"  minmax(0, 1fr)
+    "sidebar div-2  div-2"  minmax(0, 1fr)
+    "sidebar footer footer" auto
+  / 1fr      3fr    3fr;
+}
+
+div {
+  overflow-y: scroll;
+  padding: 1em;
+}
+
+main aside { grid-area: sidebar; }
+main header { grid-area: header; }
+main div:nth-of-type(1) { grid-area: div-1; }
+main div:nth-of-type(2) { grid-area: div-2; }
+main footer { grid-area: footer; }

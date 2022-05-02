@@ -1,0 +1,13 @@
+/* 2.css */
+@import url(colors.css);
+
+html {
+  height: 100%;
+  display: flex;
+}
+
+body {
+  flex:1;
+}
+ 
+ 

@@ -1,0 +1,28 @@
+/* 5.css */
+@import url(colors.css);
+
+html {
+  height: 100%;
+  display: grid;
+}
+
+body {
+  display: grid;
+}
+
+main {
+  margin: 1em;
+  border: 1px solid;
+  display: grid;
+  grid-template: 
+    "sidebar header header" auto
+    "sidebar div-1  div-2"  1fr
+    "sidebar footer footer" auto
+  / 1fr      3fr    3fr;
+}
+
+main aside { grid-area: sidebar; }
+main header { grid-area: header; }
+main div:nth-of-type(1) { grid-area: div-1; }
+main div:nth-of-type(2) { grid-area: div-2; }
+main footer { grid-area: footer; }

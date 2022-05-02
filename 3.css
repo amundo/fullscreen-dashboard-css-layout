@@ -1,0 +1,16 @@
+/* 3.css */
+@import url(colors.css);
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+  flex-direction: column;
+}
+
+body {
+  height: 100%;
+}
+

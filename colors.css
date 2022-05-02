@@ -1,0 +1,33 @@
+html {  
+  background: maroon;
+}
+
+body {
+  background: white;
+}
+
+main {
+  background: lemonchiffon;
+}
+
+main header {
+  background: gray;
+  color:white;
+}
+
+main footer {
+  background: lightgray;
+}
+
+main div:nth-of-type(1) {
+  background: azure;
+}
+
+main div:nth-of-type(1) {
+  background: cadetblue;
+}
+
+main aside {
+  background: navy;
+  color:white;
+}
